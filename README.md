@@ -5,7 +5,7 @@ Written by Patrick David
 
 Set UP
 
-To set up this program, clone the repository from Github and open the program in your terminal by running $ruby teacher_tracker_ui.rb.
+To set up this program, clone the repository from Github and open the program in your terminal by running $ruby trains_UI.rb
 
 What It Does
 
