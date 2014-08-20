@@ -6,10 +6,17 @@ describe 'Lines' do
     expect(test_line).to be_an_instance_of Lines
   end
   
-  it 'saves stations into our stations table' do
+  it 'saves lines into our lines table' do
     test_line = Lines.new({'name' => "Orange"})
     test_line.save
     expect(Lines.all).to eq [test_line]
+  end
+  
+  it 'updates name for line' do
+    test_line = Lines.new({'name' => "Orange"})
+    test_line.save
+    test_line.change_name('Gold')
+    expect(test_line.name).to eq 'Gold'
   end
   
   it 'deletes a line' do
