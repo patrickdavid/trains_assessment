@@ -12,6 +12,13 @@ describe 'Stations' do
     expect(Stations.all).to eq [test_station]
   end
   
+  it 'updates name for line' do
+    test_line = Lines.new({'name' => "Orange"})
+    test_line.save
+    test_line.change_name('Gold')
+    expect(test_line.name).to eq 'Gold'
+  end
+  
   it 'deletes a station name' do
     test_station = Stations.new({'name' => "Vienna/GMU"})
     test_station.save

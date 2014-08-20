@@ -19,7 +19,8 @@ class Stations
   end
   
   def save
-    @id = DB.exec("INSERT INTO stations (name) VALUES ('#{@name}') RETURNING id;").first['id'].to_i
+    results = DB.exec("INSERT INTO stations (name) VALUES ('#{@name}') RETURNING id;")
+    @id = results.first['id'].to_i
   end
   
   def ==(another_station)
@@ -34,4 +35,8 @@ class Stations
     end
   end
   
+  def change_name(revised_name)
+    DB.exec("UPDATE lines SET name = '#{revised_name}' WHERE id = #{@id};")
+    @name = revised_name
+  end
 end
