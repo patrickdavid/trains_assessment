@@ -1,7 +1,9 @@
 require 'rspec'
 require 'stations'
 require 'lines'
+require 'stops'
 require 'pg'
+
 
 DB = PG.connect(:dbname => 'trains_test')
 RSpec.configure do |config|
