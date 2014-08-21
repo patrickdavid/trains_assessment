@@ -19,12 +19,13 @@ describe 'Stations' do
     expect(test_line.name).to eq 'Gold'
   end
   
-  it 'deletes a station name' do
+  it 'deletes a station' do
     test_station = Stations.new({'name' => "Vienna/GMU"})
     test_station.save
     test_station1 = Stations.new({'name' => "Dunn Loring"})
     test_station1.save
-    Stations.delete(test_station)
+    name = test_station.name
+    Stations.delete(name)
     expect(Stations.all).to eq [test_station1]
   end
 end

@@ -24,7 +24,8 @@ describe 'Lines' do
     test_line.save
     test_line1 = Lines.new({'name' => "Silver"})
     test_line1.save
-    Lines.delete(test_line)
+    name = test_line.name
+    Lines.delete(name)
     expect(Lines.all).to eq [test_line1]
   end
 end
