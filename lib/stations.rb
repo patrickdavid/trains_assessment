@@ -29,8 +29,8 @@ class Stations
   
   def self.delete(input_station)
     Stations.all.each do |station|
-      if input_station == station
-        DB.exec("DELETE FROM stations WHERE id = #{input_station.id};")
+      if input_station == station.name
+        DB.exec("DELETE FROM stations WHERE name = '#{input_station}';")
       end
     end
   end
