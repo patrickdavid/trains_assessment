@@ -41,10 +41,12 @@ class Lines
   end
   
   def stations
-    results = DB.exec("SELECT stations.* FROM stops JOIN lines ON (stops.line_id = lines.id) JOIN stations ON (stops.station_id = stations.id) WHERE lines.id = #{id};")
+    results = DB.exec("SELECT stations.* FROM lines JOIN stops on (lines.id = stops.lines_id) JOIN stations on (stops.stations_id = stations.id) WHERE lines.id = #{@id};")
     stations = []
     results.each do |result|
-      stations << result['name']
+      id = result['id']
+      name = result['name']
+      stations << Lines.new({'id'=>id, 'name' => name})
     end
     stations
   end
