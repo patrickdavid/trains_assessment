@@ -28,4 +28,18 @@ describe 'Stations' do
     Stations.delete(name)
     expect(Stations.all).to eq [test_station1]
   end
+  
+  it 'lists all lines that a station has' do
+    test_line = Lines.new({'name' => "Orange"})
+    test_line.save
+    test_station = Stations.new({'name' => "Metro Center"})
+    test_station.save
+    test_stop = Stops.new({'station_id' => test_station.id, 'line_id' => test_line.id})
+    test_stop.save
+    test_line1 = Lines.new({'name' => "Red"})
+    test_line1.save
+    test_stop1 = Stops.new({'station_id' => test_station.id, 'line_id' => test_line1.id})
+    test_stop1.save
+    expect(test_station.lines).to eq [test_line, test_line1]
+  end
 end

@@ -39,4 +39,15 @@ class Stations
     DB.exec("UPDATE lines SET name = '#{revised_name}' WHERE id = #{@id};")
     @name = revised_name
   end
+  
+  def lines
+    results = DB.exec("SELECT lines.* FROM stations JOIN stops on (stations.id = stops.stations_id) JOIN lines on (stops.lines_id = lines.id) WHERE stations.id = #{@id};")
+    lines = []
+    results.each do |result|
+      id = result['id']
+      name = result['name']
+      lines << Stations.new({'id'=>id, 'name' => name})
+    end
+    lines
+  end
 end
