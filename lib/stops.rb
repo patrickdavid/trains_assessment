@@ -11,8 +11,7 @@ class Stops
   def self.all
     results = DB.exec("SELECT * FROM stops;")
     stops = []
-    results.each do |result|
-      puts result    
+    results.each do |result|   
       id = result['id'].to_i
       station_id = result['stations_id'].to_i
       line_id = result['lines_id'].to_i

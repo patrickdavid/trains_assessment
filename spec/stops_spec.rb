@@ -19,4 +19,5 @@ describe 'Stops' do
     test_stop.save
     expect(Stops.all).to eq [test_stop]
   end
+  
 end
